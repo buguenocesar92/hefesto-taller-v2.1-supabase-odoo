@@ -1,0 +1,6 @@
+<odoo>
+<record id="order_company_rule" model="ir.rule"><field name="name">Hefesto: órdenes de empresas permitidas</field><field name="model_id" ref="model_hefesto_taller_order"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+<record id="line_company_rule" model="ir.rule"><field name="name">Hefesto: líneas de empresas permitidas</field><field name="model_id" ref="model_hefesto_taller_line"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+<record id="payment_company_rule" model="ir.rule"><field name="name">Hefesto: pagos de empresas permitidas</field><field name="model_id" ref="model_hefesto_taller_payment"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+<record id="snapshot_company_rule" model="ir.rule"><field name="name">Hefesto: respaldos de empresas permitidas</field><field name="model_id" ref="model_hefesto_taller_snapshot"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+</odoo>

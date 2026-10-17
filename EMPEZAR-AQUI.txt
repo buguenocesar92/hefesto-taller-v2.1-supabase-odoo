@@ -1,0 +1,5 @@
+Hefesto Taller v2.1 con Supabase
+Lee docs/SUPABASE.md
+Usa compose.supabase.yaml
+No contiene credenciales ni datos de producción.
+Fuente: 08cb02566ca820219df6776f08065ea42d2f4d14

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hefesto_order,hefesto.order,model_hefesto_taller_order,base.group_user,1,1,1,0
+access_hefesto_line,hefesto.line,model_hefesto_taller_line,base.group_user,1,1,1,1
+access_hefesto_payment,hefesto.payment,model_hefesto_taller_payment,base.group_user,1,0,0,0
+access_hefesto_order_admin,hefesto.order.admin,model_hefesto_taller_order,base.group_system,1,1,1,1
+access_hefesto_payment_admin,hefesto.payment.admin,model_hefesto_taller_payment,base.group_system,1,1,1,1
+access_hefesto_snapshot,hefesto.snapshot,model_hefesto_taller_snapshot,base.group_system,1,1,1,1
+access_hefesto_import,hefesto.import,model_hefesto_taller_import,base.group_system,1,1,1,1
