@@ -7,7 +7,7 @@ Crea o elige un proyecto Supabase. En SQL Editor ejecuta el contenido de:
 
 `supabase/migrations/202610130001_hefesto_taller.sql`
 
-Crea dos tablas dedicadas: `hefesto_workshops` (estado del taller y revisión) y `hefesto_sessions` (hashes de sesiones y vencimiento). RLS queda habilitado y se revoca el acceso a los roles públicos anon/authenticated. Solo el servidor con service_role accede a estas tablas. No cambies tablas ajenas al proyecto.
+Crea dos tablas dedicadas: `hefesto_taller_states` (estado del taller y revisión) y `hefesto_taller_sessions` (hashes de sesiones y vencimiento). RLS queda habilitado y se revoca el acceso a los roles públicos anon/authenticated. Solo el servidor con service_role accede a estas tablas. No cambies tablas ajenas al proyecto.
 
 Mantén habilitada la Data API y expuesto el esquema `public`. Las tablas siguen protegidas por los permisos y RLS indicados. La clave secreta tiene privilegios de servidor: nunca ponerla en variables VITE_, NEXT_PUBLIC_ ni en código frontend.
 

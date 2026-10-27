@@ -38,3 +38,39 @@ Pasos la primera vez:
 1. Aplicar la migración `supabase/migrations/202610130001_hefesto_taller.sql` desde el SQL Editor de Supabase como propietario del proyecto, antes de levantar el servicio. La versión coincide con la de otras apps del MVP Hefesto, por eso se aplica a mano y no con `supabase db push` sobre una base compartida. Las tablas ya se llaman `hefesto_taller_states` y `hefesto_taller_sessions` (el esquema antiguo `hefesto_workshops`/`hefesto_sessions` quedó obsoleto).
 2. Definir las variables de entorno en Coolify y arrancar el servicio. El healthcheck interno es `GET /health`.
 3. Validar el contrato del compose con `bash scripts/coolify-check.sh` (incluido en este repo) antes de mergear cualquier cambio al `compose.supabase.yaml`.
+
+## Respaldos
+
+El kit produce respaldos con el contrato canonico de Hefesto Studio
+(`docs/CONTRATO-RESPALDO.md`, que vive en `hefesto-monitor-uptime-kuma` y
+`hefesto-respaldo-kopia`).
+
+```bash
+scripts/respaldar.sh --destino /var/backups/hefesto-taller --datos /data
+scripts/restaurar.sh --respaldo /var/backups/hefesto-taller/<timestamp> --destino /data-restaurado
+```
+
+El respaldo sale en `<timestamp>/` con `data.tar.gz`, `SHA256SUMS` y
+`manifest.json` (`software`, `version`, `database`, `sha256`, `status`). El
+`.env` **nunca** viaja en claro: solo viajan los nombres de las variables. La
+auditoria queda fuera del repositorio, en
+`$XDG_STATE_HOME/hefesto-respaldo/audit.log`.
+
+## Alcance de la integracion Odoo
+
+Hoy la integracion con Odoo es de **preparacion CSV**
+(`migration/prepare_odoo.py`): exporta el estado del kit a CSV, con su JSON
+completo y su LEEME. No hay cliente Odoo, ni XML-RPC, ni job de sincronizacion,
+ni host de Odoo configurado. El modulo `odoo/` es codigo fuente para instalar a
+mano en una instancia propia del cliente; este kit no la opera ni la despliega.
+
+## Puertas de calidad
+
+| Puerta | Comando |
+| --- | --- |
+| Pruebas | `npm test` |
+| Tipos | `npm run typecheck` |
+| Lint | `npm run lint` |
+| Build portable | `npm run build:portable` |
+| Compose | `npm run check:coolify` |
+| Respaldo | `bats tests/backup_restore.bats` |
